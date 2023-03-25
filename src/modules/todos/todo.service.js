@@ -3,13 +3,13 @@ const ErrorService = require("../../services/error.service");
 
 class TodoService {
 
-  async getAll() {
+  async getAll(userId) {
     try {
-      // const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
-      // const candidate = queryResult.rows[0]
-      // if (!candidate) {
-      //   throw ErrorService.BadRequest('Пользователь не найден')
-      // }
+      const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
+      const candidate = queryResult.rows[0]
+      if (!candidate) {
+        throw ErrorService.BadRequest('Пользователь не найден')
+      }
 
       const query = `SELECT * FROM cards`
       const queryResponse = await db.query(query)
@@ -20,13 +20,13 @@ class TodoService {
     }
   }
 
-  async getOne(id) {
+  async getOne(id, userId) {
     try {
-      // const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
-      // const candidate = queryResult.rows[0]
-      // if (!candidate) {
-      //   throw ErrorService.BadRequest('Пользователь не найден')
-      // }
+      const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
+      const candidate = queryResult.rows[0]
+      if (!candidate) {
+        throw ErrorService.BadRequest('Пользователь не найден')
+      }
 
       const query = `SELECT * FROM cards where id = '${id}'`
       const queryResponse = await db.query(query)
@@ -37,13 +37,13 @@ class TodoService {
     }
   }
 
-  async create(title, isDone, priority, status, type, startDate, endDate) {
+  async create(title, isDone, priority, status, type, startDate, endDate, userId) {
     try {
-      // const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
-      // const candidate = queryResult.rows[0]
-      // if (!candidate) {
-      //   throw ErrorService.BadRequest('Пользователь не найден')
-      // }
+      const queryResult = await db.query(`SELECT * FROM users WHERE id = '${ userId }';`)
+      const candidate = queryResult.rows[0]
+      if (!candidate) {
+        throw ErrorService.BadRequest('Пользователь не найден')
+      }
       const query = `INSERT INTO cards (title ,"isDone", priority, status, type, "startDate", "endDate") values ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
       const queryResponse = await db.query(query,[title ,isDone, priority, status, type, startDate, endDate])
 

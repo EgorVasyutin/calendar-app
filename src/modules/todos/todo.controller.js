@@ -6,7 +6,7 @@ class TodoController {
   async createCard(req, res, next){
     try {
       const { title ,isDone, priority, status, type, startDate, endDate} = req.body
-      const newCard = todoService.create(title, isDone, priority, status, type,startDate, endDate)
+      const newCard = todoService.create(title, isDone, priority, status, type,startDate, endDate, req.user.id)
 
       return res.status(201).json(newCard)
     } catch (e) {
@@ -26,7 +26,7 @@ class TodoController {
 
   async getCards(req, res, next) {
     try {
-      const cards = await todoService.getAll()
+      const cards = await todoService.getAll(req.user.id)
       return res.status(200).json(cards)
 
     } catch (e) {

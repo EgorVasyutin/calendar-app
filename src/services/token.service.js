@@ -15,21 +15,23 @@ class TokenService {
   }
 
   async saveRefreshToken(userId, refreshToken) {
+    console.log('userId',userId)
+    console.log('refreshToken', refreshToken)
 
 
     // Hайти в таблице юзер_токен запись по юзер_айди
     const query = `SELECT * FROM user_token WHERE "userId" = '${ userId }';`
     const queryResult = await db.query(query)
     const userTokenRow = queryResult.rows[0]
-
     // если запись есть то мы обновляем рефреш токен,
     if (userTokenRow) {
-
+      console.log(3)
 
       try {
         const query = `UPDATE user_token set "refreshToken" = '${refreshToken}' where "userId" = '${userTokenRow.userId}' RETURNING *;`
 
         const queryResult = await db.query(query)
+
         return queryResult.rows[0]
 }
       catch (e) {
@@ -39,11 +41,14 @@ class TokenService {
 
     // Если нет - создаем запись с userId и refreshToken
     try {
-      const query = `INSERT INTO user_token ("userId", "refreshToken") values ($1, $2) RETURNING *`
-      const createQueryResult = await db.query(query,[userId, refreshToken])
+      const query = `INSERT INTO user_token ("userId", "refreshToken") values ('${userId}', '${refreshToken}') RETURNING *`
+      console.log(query)
+      const createQueryResult = await db.query(query)
+      console.log(createQueryResult)
       return createQueryResult.rows[0]
     } catch (e) {
-      throw ErrorService.BadRequest('Ошибка при сохранении refreshToken')
+      console.log(e)
+      throw ErrorService.BadRequest(`Ошибка при сохранении refreshToken: ${e}`)
     }
   }
 

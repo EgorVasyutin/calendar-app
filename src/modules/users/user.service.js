@@ -18,11 +18,9 @@ class UserService {
       const dbResponse = await db.query(query)
 
       const newUser = dbResponse.rows[0]
-
       const tokens = tokenService.generateTokens(newUser)
       await tokenService.saveRefreshToken(newUser.id, tokens.refreshToken)
-
-      return {user: newUser }
+      return {...tokens, user: newUser }
 
     } catch (e) {
       throw ErrorService.BadRequest('Ошибка при создании пользователя')
@@ -44,7 +42,7 @@ class UserService {
     const tokens = tokenService.generateTokens(candidate)
     await tokenService.saveRefreshToken(candidate.id, tokens.refreshToken)
 
-    return {user: candidate }
+    return {...tokens, user: candidate }
   }
 
   async logout(refreshToken) {
