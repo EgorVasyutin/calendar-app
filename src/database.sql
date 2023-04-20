@@ -19,6 +19,10 @@ CREATE TABLE cards (
 );
 --
 
+CREATE TABLE cards (
+
+);
+
 
 --
 -- CREATE TABLE user_token (

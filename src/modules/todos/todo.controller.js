@@ -19,6 +19,7 @@ class TodoController {
       const card = await todoService.getOne(req.params.id)
       return res.status(200).json(card)
 
+
     } catch (e) {
       next(e)
     }
@@ -34,11 +35,7 @@ class TodoController {
     }
 
   }
-  // // async getOneTodo(req, res){
-  // //     const id = req.params.id
-  // //     const todos = await db.query(`SELECT * FROM todo where id = $1`,[id])
-  // //     res.json(todos.rows[0])
-  // // }
+
   async updateTodo(req, res, next) {
     const { title, isDone, priority, type, startDate, endDate,} = req.body
     try {
