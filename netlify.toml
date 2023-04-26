@@ -1,4 +1,6 @@
 [build]
-functions = "functions"
+publish = "dist/"
+
+functions = "functions/"
 
 
