@@ -4,8 +4,8 @@ const serverless = require('serverless-http')
 
 dotenv.config()
 
-const userRouter = require('./modules/users/user.routes')
-const todoRouter = require('./modules/todos/todo.routes')
+const userRouter = require('../src/modules/users/user.routes')
+const todoRouter = require('../src/modules/todos/todo.routes')
 
 const app = express()
 
