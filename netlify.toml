@@ -1,5 +1,5 @@
 [build]
-publish = "api_calendar/"
+publish = "dist/"
 
 functions = "functions/"
 
