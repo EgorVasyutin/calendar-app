@@ -1,9 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const serverless = require('serverless-http')
-
 dotenv.config()
-
 const userRouter = require('../src/modules/users/user.routes')
 const todoRouter = require('../src/modules/todos/todo.routes')
 const cookieParser = require("cookie-parser");
@@ -27,6 +25,7 @@ app
   .use('/api_calendar', userRouter)
   .use('/api_calendar/todos', todoRouter)
   .use(errorMiddleware)
+
 
 module.exports.handler = serverless(app)
 
