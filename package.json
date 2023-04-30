@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node functions/api.js",
     "dev": "nodemon src/main.js",
     "build": "netlify deploy --prod"
   },
