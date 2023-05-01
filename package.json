@@ -5,8 +5,9 @@
   "main": "src/main.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node functions/api.js",
-    "dev": "nodemon functions/api.js"
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js",
+    "build": "netlify deploy --prod"
   },
   "repository": {
     "type": "git",
