@@ -2,12 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "src/api.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node src/main.js",
-    "dev": "nodemon src/main.js",
-    "build": "./node_modules/.bin/netlify-lambda build src"
+    "dev": "nodemon src/api.js",
+    "start": "node_modules/.bin/netlify-lambda serve src/api.js",
+    "build": "node_modules/.bin/netlify-lambda build src/api.js"
   },
   "repository": {
     "type": "git",

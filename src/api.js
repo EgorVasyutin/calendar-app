@@ -1,6 +1,7 @@
 const express = require('express')
-const dotenv = require('dotenv')
 const serverless = require('serverless-http')
+
+const dotenv = require('dotenv')
 dotenv.config()
 const userRouter = require('../src/modules/users/user.routes')
 const todoRouter = require('../src/modules/todos/todo.routes')
@@ -10,10 +11,6 @@ const errorMiddleware = require("../src/middlewares/error.middleware");
 
 const app = express()
 
-
-// app
-//   .use('/api_calendar', userRouter)
-//   .use('/api_calendar/todos', todoRouter)
 
 app
   .use(express.json())
@@ -26,7 +23,17 @@ app
   .use('/api_calendar/todos', todoRouter)
   .use(errorMiddleware)
 
+const router = express.Router()
+
+
+router.get('/', (req, res) => {
+  res.send("lol send is working")
+})
+
+app.use('/.netlify/functions/api/', router)
 
 module.exports.handler = serverless(app)
+
+
 
 
