@@ -3,7 +3,7 @@ const serverless = require('serverless-http')
 
 const dotenv = require('dotenv')
 dotenv.config()
-const userRouter = require('../src/modules/users/user.routes')
+// const userRouter = require('../src/modules/users/user.routes')
 // const todoRouter = require('../src/modules/todos/todo.routes')
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
