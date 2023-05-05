@@ -24,14 +24,14 @@ app
   .use('/api_calendar/todos', todoRouter)
   .use(errorMiddleware)
 
-// const router = express.Router()
-//
-//
-// router.get('/', (req, res) => {
-//   res.send("lol send is working")
-// })
-//
-// app.use('/.netlify/functions/api/', router)
+const router = express.Router()
+
+
+router.get('/', (req, res) => {
+  res.send("lol send is working")
+})
+
+app.use('/.netlify/functions/api/', router)
 
 module.exports.handler = serverless(app)
 
