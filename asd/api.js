@@ -12,6 +12,8 @@ const errorMiddleware = require("../src/middlewares/error.middleware");
 const app = express()
 
 
+//
+// app
 
 
 const router = express.Router()
@@ -22,16 +24,15 @@ router.get('/', (req, res) => {
 })
 
 app.use('/.netlify/functions/api/', router)
-  // .use(express.json())
-  // .use(cookieParser())
-  // .use(cors({
-  //   credentials: true,
-  //   origin: process.env.CLIENT_URL
-  // }))
-  // .use('/api_calendar', userRouter)
-  // .use('/api_calendar/todos', todoRouter)
-  // .use(errorMiddleware)
-
+  .use(express.json())
+  .use(cookieParser())
+  .use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+  }))
+  .use('/api_calendar', userRouter)
+  .use('/api_calendar/todos', todoRouter)
+  .use(errorMiddleware)
 
 module.exports.handler = serverless(app)
 
