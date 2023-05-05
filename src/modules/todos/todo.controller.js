@@ -1,6 +1,5 @@
-const db = require('../../db')
+
 const todoService = require('./todo.service')
-const ErrorService = require('../../services/error.service')
 
 class TodoController {
   async createCard(req, res, next){
