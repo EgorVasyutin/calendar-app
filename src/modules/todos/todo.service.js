@@ -84,7 +84,7 @@ class TodoService {
         query = `UPDATE cards set "isDone" = ${isDone} where id = '${id}' RETURNING *`
       }
       if (field[0] === 'title') {
-        const isDone = body.title
+        const title = body.title
         query = `UPDATE cards set title = '${title}' where id = '${id}' RETURNING *`
       }
       if (field[0] === 'priority') {

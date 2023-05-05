@@ -72,18 +72,14 @@ class TokenService {
 
     const query = `DELETE FROM user_token where "refreshToken" = (E'${refreshToken}');`
     const queryResult = await db.query(query)
-    const tokenData = queryResult.rows[0]
-
-    return tokenData;
+    return queryResult.rows[0];
   }
 
   async findToken(refreshToken) {
     try {
       const query = `SELECT * FROM user_token WHERE "refreshToken" = (E'${refreshToken}')`
       const queryResult = await db.query(query)
-      const tokenData = queryResult.rows[0]
-
-      return tokenData
+      return queryResult.rows[0]
     } catch (e) {
       throw ErrorService.BadRequest('Ошибка при поиске user_token row по refresh-токену')
     }
