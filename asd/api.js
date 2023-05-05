@@ -24,10 +24,10 @@ router.get('/', (req, res) => {
 app.use('/.netlify/functions/api/', router)
   .use(express.json())
   .use(cookieParser())
-  .use(cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL
-  }))
+  // .use(cors({
+  //   credentials: true,
+  //   origin: process.env.CLIENT_URL
+  // }))
   // .use('/api_calendar', userRouter)
   // .use('/api_calendar/todos', todoRouter)
   // .use(errorMiddleware)
