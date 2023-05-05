@@ -8,7 +8,7 @@ dotenv.config()
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const errorMiddleware = require("../src/middlewares/error.middleware");
-const userController = require("../src/modules/users/user.controller");
+// const userController = require("../src/modules/users/user.controller");
 
 const app = express()
 
@@ -23,7 +23,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   res.send("lol send is working")
 })
-router.post('/sign-up', userController.singUp)
+// router.post('/sign-up', userController.singUp)
 
 app.use('/.netlify/functions/api/', router)
   .use(express.json())
