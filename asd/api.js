@@ -1,13 +1,13 @@
 const express = require('express')
 const serverless = require('serverless-http')
 
-// const dotenv = require('dotenv')
-// dotenv.config()
+const dotenv = require('dotenv')
+dotenv.config()
 const userRouter = require('../src/modules/users/user.routes')
-// const todoRouter = require('../src/modules/todos/todo.routes')
+const todoRouter = require('../src/modules/todos/todo.routes')
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-// const errorMiddleware = require("../src/middlewares/error.middleware");
+const errorMiddleware = require("../src/middlewares/error.middleware");
 
 const app = express()
 
@@ -30,9 +30,9 @@ app.use('/.netlify/functions/api/', router)
     credentials: true,
     origin: process.env.CLIENT_URL
   }))
-  .use('/api_calendar', userRouter)
+  // .use('/api_calendar', userRouter)
   // .use('/api_calendar/todos', todoRouter)
-  // .use(errorMiddleware)
+  .use(errorMiddleware)
 
 module.exports.handler = serverless(app)
 
