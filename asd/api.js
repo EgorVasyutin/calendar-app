@@ -28,9 +28,9 @@ app.use('/.netlify/functions/api/', router)
     credentials: true,
     origin: process.env.CLIENT_URL
   }))
-  .use('/api_calendar', userRouter)
-  .use('/api_calendar/todos', todoRouter)
-  .use(errorMiddleware)
+  // .use('/api_calendar', userRouter)
+  // .use('/api_calendar/todos', todoRouter)
+  // .use(errorMiddleware)
 
 
 module.exports.handler = serverless(app)
