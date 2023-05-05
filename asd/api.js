@@ -5,7 +5,7 @@ const serverless = require('serverless-http')
 // dotenv.config()
 // const userRouter = require('../src/modules/users/user.routes')
 // const todoRouter = require('../src/modules/todos/todo.routes')
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 // const cors = require("cors");
 // const errorMiddleware = require("../src/middlewares/error.middleware");
 
@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
 })
 
 app.use('/.netlify/functions/api/', router)
-  // .use(express.json())
-  // .use(cookieParser())
+  .use(express.json())
+  .use(cookieParser())
   // .use(cors({
   //   credentials: true,
   //   origin: process.env.CLIENT_URL
