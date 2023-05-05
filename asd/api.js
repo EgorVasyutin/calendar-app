@@ -6,7 +6,7 @@ const serverless = require('serverless-http')
 // const userRouter = require('../src/modules/users/user.routes')
 // const todoRouter = require('../src/modules/todos/todo.routes')
 const cookieParser = require("cookie-parser");
-// const cors = require("cors");
+const cors = require("cors");
 // const errorMiddleware = require("../src/middlewares/error.middleware");
 
 const app = express()
@@ -26,10 +26,10 @@ router.get('/', (req, res) => {
 app.use('/.netlify/functions/api/', router)
   .use(express.json())
   .use(cookieParser())
-  // .use(cors({
-  //   credentials: true,
-  //   origin: process.env.CLIENT_URL
-  // }))
+  .use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+  }))
   // .use('/api_calendar', userRouter)
   // .use('/api_calendar/todos', todoRouter)
   // .use(errorMiddleware)
