@@ -1,13 +1,13 @@
 const express = require('express')
 const serverless = require('serverless-http')
 
-const dotenv = require('dotenv')
-dotenv.config()
-// const userRouter = require('../src/modules/users/user.routes')
-// const todoRouter = require('../src/modules/todos/todo.routes')
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const errorMiddleware = require("../src/middlewares/error.middleware");
+// const dotenv = require('dotenv')
+// dotenv.config()
+// // const userRouter = require('../src/modules/users/user.routes')
+// // const todoRouter = require('../src/modules/todos/todo.routes')
+// const cookieParser = require("cookie-parser");
+// const cors = require("cors");
+// const errorMiddleware = require("../src/middlewares/error.middleware");
 // const userController = require("../src/modules/users/user.controller");
 
 const app = express()
@@ -26,15 +26,15 @@ router.get('/', (req, res) => {
 // router.post('/sign-up', userController.singUp)
 
 app.use('/.netlify/functions/api/', router)
-  .use(express.json())
-  .use(cookieParser())
-  .use(cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL
-  }))
-  // .use('/api_calendar', userRouter)
-  // .use('/api_calendar/todos', todoRouter)
-  .use(errorMiddleware)
+  // .use(express.json())
+  // .use(cookieParser())
+  // .use(cors({
+  //   credentials: true,
+  //   origin: process.env.CLIENT_URL
+  // }))
+  // // .use('/api_calendar', userRouter)
+  // // .use('/api_calendar/todos', todoRouter)
+  // .use(errorMiddleware)
 
 module.exports.handler = serverless(app)
 
