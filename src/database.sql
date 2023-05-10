@@ -1,11 +1,11 @@
 -- CREATE database "calendar-app";
 
--- CREATE TABLE users (
---   id SERIAL PRIMARY KEY,
---   username VARCHAR(255),
---   email VARCHAR(255),
---   password VARCHAR(63)
--- );
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255),
+  email VARCHAR(255),
+  password VARCHAR(63)
+);
 --
 CREATE TABLE cards (
   id SERIAL PRIMARY KEY,
@@ -24,10 +24,10 @@ CREATE TABLE cards (
 CREATE TABLE cards ();
 
 
--- CREATE TABLE user_token (
---  "userId" INTEGER REFERENCES users (id),
---  "refreshToken" VARCHAR(255)
--- );
+CREATE TABLE user_token (
+ "userId" INTEGER REFERENCES users (id),
+ "refreshToken" VARCHAR(255)
+);
 
 
 ALTER TABLE cards ADD COLUMN "startDate" VARCHAR(255);

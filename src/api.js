@@ -12,11 +12,6 @@ const userController = require("../src/modules/users/user.controller");
 
 const app = express()
 
-
-//
-// app
-
-
 const router = express.Router()
 
 
@@ -36,7 +31,3 @@ app.use('/.netlify/functions/api/', router)
   .use(errorMiddleware)
 
 module.exports.handler = serverless(app)
-
-
-
-

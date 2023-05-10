@@ -12,4 +12,3 @@ router.delete('/:id', authMiddleware, todoController.deleteTodo)
 router.patch('/:id', authMiddleware, todoController.patch)
 
 module.exports = router
-
