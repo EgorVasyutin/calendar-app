@@ -6,8 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/api.js",
-    "start": "node_modules/.bin/netlify-lambda serve src/api.js",
-    "build": "node_modules/.bin/netlify-lambda build src/api.js"
+    "start": "node_modules/.bin/netlify-lambda serve src",
+    "build": "node_modules/.bin/netlify-lambda build src"
   },
   "repository": {
     "type": "git",
