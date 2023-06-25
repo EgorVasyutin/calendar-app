@@ -18,7 +18,6 @@ class TokenService {
     console.log('userId',userId)
     console.log('refreshToken', refreshToken)
 
-
     // Hайти в таблице юзер_токен запись по юзер_айди
     const query = `SELECT * FROM user_token WHERE "userId" = '${ userId }';`
     const queryResult = await db.query(query)

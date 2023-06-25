@@ -1,25 +1,20 @@
-const express = require('express')
-const serverless = require('serverless-http')
 
+const express = require('express')
+const cors = require('cors')
 const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
+const errorMiddleware = require('./middlewares/error.middleware');
+
 dotenv.config()
-const userRouter = require('../src/modules/users/user.routes')
-const todoRouter = require('../src/modules/todos/todo.routes')
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const errorMiddleware = require("../src/middlewares/error.middleware");
-const userController = require("../src/modules/users/user.controller");
+
+const userRouter = require('./modules/users/user.routes')
+const todoRouter = require('./modules/todos/todo.routes')
+
+const PORT = process.env.PORT || 1000
 
 const app = express()
 
-const router = express.Router()
-
-
-router.get('/', (req, res) => {
-  res.send("lol send is working")
-})
-
-app.use('/.netlify/functions/api/', router)
+app
   .use(express.json())
   .use(cookieParser())
   .use(cors({
@@ -30,4 +25,7 @@ app.use('/.netlify/functions/api/', router)
   .use('/api_calendar/todos', todoRouter)
   .use(errorMiddleware)
 
-module.exports.handler = serverless(app)
+
+app.listen(PORT, () => {
+  console.log('SERVERS START PORT ' + PORT)
+})

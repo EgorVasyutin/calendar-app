@@ -18,25 +18,17 @@ CREATE TABLE cards (
   userId INTEGER REFERENCES users (id)
 );
 
-
---
-
 CREATE TABLE cards ();
-
 
 CREATE TABLE user_token (
  "userId" INTEGER REFERENCES users (id),
  "refreshToken" VARCHAR(255)
 );
 
-
 ALTER TABLE cards ADD COLUMN "startDate" VARCHAR(255);
 ALTER TABLE cards ADD COLUMN status VARCHAR(255);
 
-
 --  ALTER TABLE todo RENAME COLUMN is_done TO isDone;
-
-
 
 -- ALTER TABLE todo ADD userId INTEGER;
 
@@ -61,11 +53,6 @@ ALTER TABLE cards ADD COLUMN status VARCHAR(255);
 -- ALTER TABLE todo DROP COLUMN userId;
 
 -- ALTER TABLE todo ADD COLUMN userId SET DEFAULT 1;
-
-
-
-
-
 
 
 

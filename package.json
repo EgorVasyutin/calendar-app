@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/EgorVasyutin/-API-requests#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.21.0",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
